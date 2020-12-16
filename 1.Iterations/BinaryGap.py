@@ -11,7 +11,6 @@ The number 15 has binary representation 1111 and has no binary gaps.
 The number 32 has binary representation 100000 and has no binary gaps.
 
 Write a function:
-
     def solution(N)
 
 that, given a positive integer N, returns the length of its longest binary gap. 
@@ -24,7 +23,6 @@ Given N = 32 the function should return 0, because N has binary representation '
 and thus no binary gaps.
 
 Write an efficient algorithm for the following assumptions:
-
         N is an integer within the range [1..2,147,483,647].
 """
 
@@ -38,5 +36,5 @@ Write an efficient algorithm for the following assumptions:
 def solution(N): 
     return len(max(format(N,'b').strip('0').split('1')))
 
-N=654
+N=1041
 print(solution(N))
