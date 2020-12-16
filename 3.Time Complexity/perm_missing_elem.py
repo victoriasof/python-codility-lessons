@@ -1,5 +1,7 @@
 """
-An array A consisting of N different integers is given. The array contains integers in the range [1..(N + 1)], which means that exactly one element is missing.
+An array A consisting of N different integers is given. 
+The array contains integers in the range [1..(N + 1)], 
+which means that exactly one element is missing.
 
 Your goal is to find that missing element.
 
@@ -24,3 +26,20 @@ Write an efficient algorithm for the following assumptions:
         each element of array A is an integer within the range [1..(N + 1)].
 
 """
+
+#The array contains integers in the range [1..(N + 1)], 
+#which means that exactly one element is missing.
+#each element of array A is an integer within the range [1..(N + 1)].
+
+def solution(A):
+
+    n = len(A)+1
+    result = n * (n + 1) // 2
+    #This problem is part of the Lessons of time complexity, model solution 
+
+    return result - sum(A)
+
+A=[2, 3, 1, 5]
+print(solution(A))    
+
+#https://stackoverflow.com/questions/29861306/what-is-the-right-way-to-solve-codilitys-permmissingelem-test-java/29861358
