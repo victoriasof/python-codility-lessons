@@ -27,3 +27,16 @@ Write an efficient algorithm for the following assumptions:
 
         N is an integer within the range [1..2,147,483,647].
 """
+
+#For binary gap: 
+# convert int into binary, 
+# strip trailing zeros, 
+# split at '1' to list, 
+# find longest element in list 
+# get element lenght. 
+
+def solution(N): 
+    return len(max(format(N,'b').strip('0').split('1')))
+
+N=654
+print(solution(N))
