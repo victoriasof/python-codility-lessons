@@ -39,9 +39,31 @@ the function should return [1, 2, 3, 4]
 Assume that:
 
         N and K are integers within the range [0..100];
-        each element of array A is an integer within the range [−1,000..1,000].
 
 In your solution, focus on correctness. 
 The performance of your solution will not be the focus of the assessment.
 """
 
+# https://stackoverflow.com/questions/9457832/python-list-rotation
+
+# def rotate(l, n):
+#     return l[-n:] + l[:-n]
+
+# The arguments to rotate are a list and an integer denoting the shift. 
+# The function creates two new lists using slicing 
+# and returns the concatenatenation of these lists. 
+# The rotate function does not modify the input list.
+
+
+def solution(A, K):
+
+#conditions missing    
+
+    return A[-K:] + A[:-K]
+
+#https://stackoverflow.com/questions/509211/understanding-slice-notation    
+     
+#example:     
+A = [3, 8, 9, 7, 6]
+K = 3
+print(solution(A, K))
