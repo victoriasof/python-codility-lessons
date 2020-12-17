@@ -1,12 +1,15 @@
 """
-A non-empty array A consisting of N integers is given. The consecutive elements of array A represent consecutive cars on a road.
+A non-empty array A consisting of N integers is given. 
+The consecutive elements of array A represent consecutive cars on a road.
 
 Array A contains only 0s and/or 1s:
 
         0 represents a car traveling east,
         1 represents a car traveling west.
 
-The goal is to count passing cars. We say that a pair of cars (P, Q), where 0 ≤ P < Q < N, is passing when P is traveling to the east and Q is traveling to the west.
+The goal is to count passing cars. 
+...
+is passing when P is traveling to the east and Q is traveling to the west.
 
 For example, consider array A such that:
   A[0] = 0
@@ -23,7 +26,7 @@ Write a function:
 
 that, given a non-empty array A of N integers, returns the number of pairs of passing cars.
 
-The function should return −1 if the number of pairs of passing cars exceeds 1,000,000,000.
+...
 
 For example, given:
   A[0] = 0
@@ -40,3 +43,24 @@ Write an efficient algorithm for the following assumptions:
         each element of array A is an integer that can have one of the following values: 0, 1.
 
 """
+
+def solution(A):
+  
+    zeros = 0
+    passing = 0
+
+    for i in A:
+
+        if i == 0:
+            zeros += 1
+
+        else:
+            passing += zeros
+
+    return passing
+
+
+A = [0, 1, 0, 1, 1]
+print(solution(A))
+
+#https://stackoverflow.com/questions/48046020/passingcars-in-codility-using-python
