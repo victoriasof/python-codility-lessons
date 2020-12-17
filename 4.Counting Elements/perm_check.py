@@ -45,3 +45,18 @@ Write an efficient algorithm for the following assumptions:
         each element of array A is an integer within the range [1..1,000,000,000].
 
 """
+
+def solution(A):
+
+    if set(A) == set(range(1, len(A)+1)):
+       return 1
+    
+    else:
+       return 0    
+
+A = [4, 1, 3, 2]
+print(solution(A))
+
+
+A = [4, 1, 3]
+print(solution(A))
