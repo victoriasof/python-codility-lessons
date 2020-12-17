@@ -39,7 +39,9 @@ def solution(A):
     
     for i in A[:-1]:
         left_sum += i
-        minval = min(abs(array_sum - 2*left_sum), minval)
+        #minval = min(abs(array_sum - 2*left_sum), minval)
+        minval = min(abs(left_sum + (left_sum - array_sum)), minval)
+        #rewrote above line to make it more understandable for me 
     
     return minval
 
