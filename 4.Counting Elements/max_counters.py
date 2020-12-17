@@ -1,14 +1,8 @@
 """
 You are given N counters, initially set to 0, and you have two possible operations on them:
-
-        increase(X) − counter X is increased by 1,
-        max counter − all counters are set to the maximum value of any counter.
-
+        ...
 A non-empty array A of M integers is given. This array represents consecutive operations:
-
-        if A[K] = X, such that 1 ≤ X ≤ N, then operation K is increase(X),
-        if A[K] = N + 1 then operation K is max counter.
-
+      ...
 For example, given integer N = 5 and array A such that:
     A[0] = 3
     A[1] = 4
@@ -33,7 +27,8 @@ Write a function:
 
     def solution(N, A)
 
-that, given an integer N and a non-empty array A consisting of M integers, returns a sequence of integers representing the values of the counters.
+that, given an integer N and a non-empty array A consisting of M integers, 
+returns a sequence of integers representing the values of the counters.
 
 Result array should be returned as an array of integers.
 
@@ -54,4 +49,27 @@ Write an efficient algorithm for the following assumptions:
         each element of array A is an integer within the range [1..N + 1].
 
 """
+
+def solution(counters, array):
+
+    output = [0 for _ in range(counters)]
+    #value of counters (0, 0, 0, 0, 0)
+
+    for element in array:
+    
+        if element <= counters: 
+            output[element-1] += 1 
+            #indexes start at 0, but counters start at 1
+            #value of counters after first operation (0, 0, 1, 0, 0)
+
+        else: #if element>counters(6 in this example) then all counters take value of max counter 
+            output = [max(output) for i in range(len(output))] 
+    
+    return output
+
+counters = 5
+array = [3, 4, 4, 6, 1, 4, 4]
+#we max out at 6
+
+print(solution(counters, array))
 
