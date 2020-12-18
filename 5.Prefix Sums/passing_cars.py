@@ -64,3 +64,4 @@ A = [0, 1, 0, 1, 1]
 print(solution(A))
 
 #https://stackoverflow.com/questions/48046020/passingcars-in-codility-using-python
+#
