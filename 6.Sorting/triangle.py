@@ -37,6 +37,7 @@ def solution(A):
   
   A.sort()
 
+  # for i in range(0, len(A)-2):...for some reason 0 was undefined ??
   for i in range(len(A)-2):
     if A[i] + A[i+1] > A[i+2]:
       return 1
