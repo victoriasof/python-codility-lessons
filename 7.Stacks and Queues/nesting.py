@@ -40,6 +40,7 @@ def solution(S):
                         return 0
 
         return 1 if parentheses == 0 else 0        
+        #if there are less ( than ) then it is not well nested 
 
 
 S = "(()(())())"  
