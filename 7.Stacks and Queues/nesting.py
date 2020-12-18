@@ -1,6 +1,4 @@
 """
-
-
 A string S consisting of N characters is called properly nested if:
 
         S is empty;
@@ -13,9 +11,11 @@ Write a function:
 
     def solution(S)
 
-that, given a string S consisting of N characters, returns 1 if string S is properly nested and 0 otherwise.
+that, given a string S consisting of N characters, 
+returns 1 if string S is properly nested and 0 otherwise.
 
-For example, given S = "(()(())())", the function should return 1 and given S = "())", the function should return 0, as explained above.
+For example, given S = "(()(())())", the function should return 1 and given S = "())", 
+the function should return 0, as explained above.
 
 Write an efficient algorithm for the following assumptions:
 
@@ -23,3 +23,29 @@ Write an efficient algorithm for the following assumptions:
         string S consists only of the characters "(" and/or ")".
 
 """
+
+def solution(S):
+        
+        parentheses = 0
+
+        for element in S:
+
+                if element == "(":
+                        parentheses += 1
+                
+                else:
+                        parentheses -= 1
+
+                if parentheses < 0:
+                        return 0
+
+        return 1 if parentheses == 0 else 0        
+
+
+S = "(()(())())"  
+print(solution(S))
+
+S = "())"
+print(solution(S))
+
+#https://codesays.com/2014/solution-to-nesting-by-codility/
