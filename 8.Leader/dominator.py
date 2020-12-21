@@ -16,7 +16,7 @@ Write a function
 
 that, given an array A consisting of N integers, 
 returns index of any element of array A in which the dominator of A occurs. 
-The function should return −1 if array A does not have a dominator.
+...
 
 For example, given array A such that
  A[0] = 3    A[1] = 4    A[2] =  3
@@ -28,6 +28,47 @@ the function may return 0, 2, 4, 6 or 7, as explained above.
 Write an efficient algorithm for the following assumptions:
 
         N is an integer within the range [0..100,000];
-        each element of array A is an integer within the range [−2,147,483,648..2,147,483,647].
+        ...
 
 """
+
+"""
+#FIRST SOLUTION:
+
+from collections import Counter
+
+def solution(A):
+    
+    if len(A) == 0:
+        return -1
+
+    dominator, dom_count = Counter(A).most_common()[0]
+
+    if dom_count <= len(A) // 2:
+        return -1
+
+    for i, value in enumerate(A):
+        if value == dominator:
+            return i    
+"""
+#SECOND SOLUTION:
+
+def solution(A):
+
+    if len(A) == 0:
+        return -1
+
+    sort_a = sorted(A)
+    length = len(A) // 2
+    dominator = sort_a[length]
+
+    if A.count(dominator) > length:
+        return A.index(dominator)
+    else:
+        return -1    
+
+A = [3, 4, 3, 2, 3, -1, 3, 3]       
+print(solution(A))
+
+#function returns index of any element of array A in which the dominator of A occurs. 
+#(in this case result is 0)
