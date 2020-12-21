@@ -66,32 +66,32 @@ def solution(A):
 
 def solution(A):
 
-    size = len(A)
-    count, count1, sequence, answer = 0, 0, 0, 0
+    length = len(A)
+    count1, count2, sequence, result = 0, 0, 0, 0
 
     for i in A:
-        if 0 == count:
+        if count1 == 0:
             sequence = i
 
         if sequence == i:
-            count += 1
+            count1 += 1
 
         else:
-            count -= 1
+            count1 -= 1
 
-    count = A.count(sequence)
+    count1 = A.count(sequence)
 
-    if count > size // 2:
+    if count1 > length // 2:
 
-        for i in xrange(size):
+        for i in xrange(length):
 
             if A[i] == sequence:
-                count1 += 1
+                count2 += 1
 
-            if count1 > (i + 1) // 2 and count - count1 > (size - 1 - i) // 2:
-                answer += 1
+            if count2 > (i + 1) // 2 and count1-count2 > (length -1 -i) // 2:
+                result += 1
 
-    return answer
+    return result
 
 
 A = [4, 3, 4, 4, 4, 2]
