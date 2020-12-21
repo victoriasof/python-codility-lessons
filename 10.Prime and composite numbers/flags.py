@@ -1,4 +1,5 @@
 """
+
 A non-empty array A consisting of N integers is given.
 
 A peak is an array element which is larger than its neighbours. More precisely, it is an index P such that 0 < P < N − 1 and A[P − 1] < A[P] > A[P + 1].
