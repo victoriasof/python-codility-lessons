@@ -1,10 +1,14 @@
 """
 
-A prime is a positive integer X that has exactly two distinct divisors: 1 and X. The first few prime integers are 2, 3, 5, 7, 11 and 13.
+A prime is a positive integer X that has exactly two distinct divisors: 1 and X. 
+The first few prime integers are 2, 3, 5, 7, 11 and 13.
 
-A prime D is called a prime divisor of a positive integer P if there exists a positive integer K such that D * K = P. For example, 2 and 5 are prime divisors of 20.
+A prime D is called a prime divisor of a positive integer P 
+if there exists a positive integer K such that D * K = P. 
+For example, 2 and 5 are prime divisors of 20.
 
-You are given two positive integers N and M. The goal is to check whether the sets of prime divisors of integers N and M are exactly the same.
+You are given two positive integers N and M. 
+The goal is to check whether the sets of prime divisors of integers N and M are exactly the same.
 
 For example, given:
 
@@ -16,7 +20,9 @@ Write a function:
 
     def solution(A, B)
 
-that, given two non-empty arrays A and B of Z integers, returns the number of positions K for which the prime divisors of A[K] and B[K] are exactly the same.
+that, given two non-empty arrays A and B of Z integers, 
+returns the number of positions K for which the prime divisors of A[K] and B[K] 
+are exactly the same.
 
 For example, given:
     A[0] = 15   B[0] = 75
@@ -31,3 +37,39 @@ Write an efficient algorithm for the following assumptions:
         each element of arrays A, B is an integer within the range [1..2,147,483,647].
 
 """
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a % b)
+
+def solution(A, B):
+    # write your code in Python 2.7
+    cnt = 0
+
+    for i in xrange(len(A)):
+        a, b = A[i], B[i]
+        g = gcd(a, b)
+
+        while True:
+            d = gcd(a, g)
+            if 1 == d:
+                break
+            a /= d
+
+        while True:
+            d = gcd(b, g)
+            if 1 == d:
+                break
+            b /= d
+
+        cnt += 1 if a == 1 and b == 1 else 0
+
+    return cnt
+
+
+A = [15, 10, 3]
+B = [75, 30, 5]
+print(solution(A,B))    
+
+#https://codesays.com/2014/solution-to-common-prime-divisors-by-codility/
