@@ -19,3 +19,25 @@ Write an efficient algorithm for the following assumptions:
         N is an integer within the range [1..2,147,483,647].
 
 """
+
+def solution(N):
+
+    count = 1
+    result = 0
+
+    while count * count < N:
+        # N has two factors: candidate and N // candidate
+        if N % count == 0:      
+            result += 2
+        count += 1
+
+    # If N is square of some value.
+    if count * count == N:  
+        result += 1
+
+    return result
+
+N = 24    
+print(solution(N))
+
+#https://codesays.com/2014/solution-to-count-factors-by-codility/
