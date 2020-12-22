@@ -29,3 +29,16 @@ Write an efficient algorithm for the following assumptions:
         N is an integer within the range [1..1,000,000,000].
 
 """
+
+from math import sqrt
+
+def solution(N):
+    
+    for i in xrange(int(sqrt(N)), 0, -1):
+        if N % i == 0:
+            return 2*(i+N/i)
+
+N = 30
+print(solution(N))            
+
+#https://codesays.com/2014/solution-to-min-perimeter-rectangle-by-codility/
