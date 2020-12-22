@@ -3,7 +3,7 @@
 A non-empty array A consisting of N integers is given.
 
 A peak is an array element which is larger than its neighbors. 
-More precisely, it is an index P such that 0 < P < N − 1,  A[P − 1] < A[P] and A[P] > A[P + 1].
+...
 
 For example, the following array A:
     A[0] = 1
@@ -24,13 +24,10 @@ has exactly three peaks: 3, 5, 10.
 We want to divide this array into blocks containing the same number of elements. 
 More precisely, we want to choose a number K that will yield the following blocks:
 
-        A[0], A[1], ..., A[K − 1],
-        A[K], A[K + 1], ..., A[2K − 1],
-        ...
-        A[N − K], A[N − K + 1], ..., A[N − 1].
+    ...
 
 What's more, every block should contain at least one peak. 
-Notice that extreme elements of the blocks (for example A[K − 1] or A[K]) can also be peaks, 
+...
 but only if they have both neighbors (including one in an adjacent blocks).
 
 The goal is to find the maximum number of blocks into which the array A can be divided.
@@ -80,3 +77,40 @@ Write an efficient algorithm for the following assumptions:
         each element of array A is an integer within the range [0..1,000,000,000].
 
 """
+
+
+def solution(A):
+    peaks = []
+
+    for idx in xrange(1, len(A)-1):
+        if A[idx-1] < A[idx] > A[idx+1]:
+            peaks.append(idx)
+
+    if len(peaks) == 0:
+        return 0
+
+    for size in xrange(len(peaks), 0, -1):
+
+        if len(A) % size == 0:
+            block_size = len(A) // size
+            found = [False] * size
+            found_cnt = 0
+
+            for peak in peaks:
+                block_nr = peak//block_size
+
+                if found[block_nr] == False:
+                    found[block_nr] = True
+                    found_cnt += 1
+
+            if found_cnt == size:
+                return size
+                
+    return 0
+
+
+A = [1, 2, 3, 4, 3, 4, 1, 2, 3, 4, 6, 2]
+print(solution(A))
+
+#https://codesays.com/2014/solution-to-peaks-by-codility/
+
