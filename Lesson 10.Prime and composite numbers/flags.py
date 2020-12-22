@@ -3,7 +3,7 @@
 A non-empty array A consisting of N integers is given.
 
 A peak is an array element which is larger than its neighbours. 
-More precisely, it is an index P such that 0 < P < N − 1 and A[P − 1] < A[P] > A[P + 1].
+...
 
 For example, the following array A:
     A[0] = 1
@@ -28,7 +28,7 @@ The goal is to set the maximum number of flags on the peaks, according to certai
 
 Flags can only be set on peaks. What's more, if you take K flags, 
 then the distance between any two flags should be greater than or equal to K. 
-The distance between indices P and Q is the absolute value |P − Q|.
+...
 
 For example, given the mountain range represented by array A, 
 above, with N = 12, if you take:
@@ -68,3 +68,43 @@ Write an efficient algorithm for the following assumptions:
         each element of array A is an integer within the range [0..1,000,000,000].
 
 """
+
+def solution(A):
+
+    N = len(A)
+    peaks = []
+
+    for i in xrange(1, N-1):
+        if A[i] > A[i-1] and A[i] > A[i+1]:
+            peaks.append(i)
+
+    if len(peaks) == 0:
+        return 0
+    
+    # the distance for k flags requires k(k-1) distance between first and last flag
+    max_flags_possible = len(peaks)
+
+    while max_flags_possible * (max_flags_possible - 1) > (peaks[-1] - peaks[0]):
+        max_flags_possible -=1
+
+    for k in xrange(max_flags_possible, 0, -1):
+        flags_set = 1
+        distance = 0
+
+        for i in xrange(1, len(peaks)):
+            distance += abs(peaks[i-1] - peaks[i])
+
+            if distance >= k:
+                flags_set += 1
+                distance = 0
+
+        if flags_set >= k:
+            return k
+            
+    return 0
+
+
+A = [1, 5, 3, 4, 3, 4, 1, 2, 3, 4, 6, 2]
+print(solution(A))
+
+#https://codesays.com/2014/solution-to-boron2013-flags-by-codility/
