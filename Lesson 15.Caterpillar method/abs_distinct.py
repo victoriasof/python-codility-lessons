@@ -1,7 +1,8 @@
 """
-
-
-A non-empty array A consisting of N numbers is given. The array is sorted in non-decreasing order. The absolute distinct count of this array is the number of distinct absolute values among the elements of the array.
+A non-empty array A consisting of N numbers is given. 
+The array is sorted in non-decreasing order. 
+The absolute distinct count of this array is the number of distinct absolute values 
+among the elements of the array.
 
 For example, consider array A such that:
   A[0] = -5
@@ -11,13 +12,16 @@ For example, consider array A such that:
   A[4] =  3
   A[5] =  6
 
-The absolute distinct count of this array is 5, because there are 5 distinct absolute values among the elements of this array, namely 0, 1, 3, 5 and 6.
+The absolute distinct count of this array is 5, 
+because there are 5 distinct absolute values among the elements of this array, 
+namely 0, 1, 3, 5 and 6.
 
 Write a function:
 
     def solution(A)
 
-that, given a non-empty array A consisting of N numbers, returns absolute distinct count of array A.
+that, given a non-empty array A consisting of N numbers, 
+returns absolute distinct count of array A.
 
 For example, given array A such that:
   A[0] = -5
@@ -32,7 +36,15 @@ the function should return 5, as explained above.
 Write an efficient algorithm for the following assumptions:
 
         N is an integer within the range [1..100,000];
-        each element of array A is an integer within the range [−2,147,483,648..2,147,483,647];
+        each element of array A is an integer within the range [-2,147,483,648..2,147,483,647];
         array A is sorted in non-decreasing order.
 
 """
+
+def solution(A):
+  return len(set([abs(n) for n in A]))
+
+A = [-5, -3, -1, 0, 3, 6]
+print(solution(A))
+
+#https://codesays.com/2014/solution-to-abs-distinct-by-codility/
