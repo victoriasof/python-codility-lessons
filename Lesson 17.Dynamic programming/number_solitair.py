@@ -63,14 +63,14 @@ Write an efficient algorithm for the following assumptions:
 
 def solution(A):
 
-    d = 6
-    n = len(A)
-    max_score = [A[0]] * d
+    dice = 6
+    length = len(A)
+    max_score = [A[0]] * dice
 
-    for p in xrange(1, n):
-        max_score[p % d] = max(max_score) + A[p]
+    for i in xrange(1, length):
+        max_score[i % dice] = max(max_score) + A[i]
 
-    return max_score[(n - 1) % d]   
+    return max_score[(length - 1) % dice]   
 
 A = [1, -2, 0, 9, -1, -2]
 print(solution(A))
