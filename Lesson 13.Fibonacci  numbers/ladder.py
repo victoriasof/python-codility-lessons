@@ -37,6 +37,7 @@ Write a function:
 
 that, given two non-empty arrays A and B of L integers, 
 returns an array consisting of L integers specifying the consecutive answers; 
+
 position I should contain the number of different ways of climbing the ladder 
 with A[I] rungs modulo 2B[I].
 
@@ -87,4 +88,6 @@ B = [3, 2, 4, 3, 1]
 print(solution(A,B))
 
 #https://codesays.com/2014/solution-to-ladder-by-codility/
+
+#bitwise operators: https://wiki.python.org/moin/BitwiseOperators
 
