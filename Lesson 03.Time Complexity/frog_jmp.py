@@ -34,7 +34,7 @@ Write an efficient algorithm for the following assumptions:
 def solution(X, Y, D):
 
    distance = Y - X
-   jumps = distance / D
+   jumps = distance // D
 
    if distance % D < D:
        jumps +=1

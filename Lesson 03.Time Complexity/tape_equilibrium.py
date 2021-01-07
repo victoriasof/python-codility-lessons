@@ -37,7 +37,7 @@ def solution(A):
     array_sum = sum(A)
     minval = float('inf')
     
-    for i in A[:-1]:
+    for i in A[:-1]: #It slices the string to omit the last character
         left_sum += i
         #minval = min(abs(array_sum - 2*left_sum), minval)
         minval = min(abs(left_sum + (left_sum - array_sum)), minval)
